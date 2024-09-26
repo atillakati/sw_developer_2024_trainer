@@ -27,3 +27,6 @@ Im folgende wird eine einfache Architektur dargestellt:
 
 [Markdown Syntax Guide](https://www.markdownguide.org/basic-syntax/)
 
+## Git Grundlagen
+
+![GitBasics](doc/images/git-overview.drawio.png)
