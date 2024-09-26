@@ -1,3 +1,5 @@
+![TestBild](doc/images/wifi_campus.PNG)
+
 # WIFI SW Developer Kurs 2024
 ## Test
 
@@ -9,7 +11,8 @@
 
 
 Beispiel Code:
-```CS
+
+```csharp
     void Test()
     {
         System.Console.WriteLine();
