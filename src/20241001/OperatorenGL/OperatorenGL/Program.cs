@@ -49,8 +49,7 @@ namespace OperatorenGL
             Console.WriteLine("Ein Zahl = " + eineZahl++);
 
             //Vergleichsoperatoren
-            // < > <= >= == !=
-
+            // < > <= >= == !=                        
             bool isEqual = eineZahl < "Gandalf".Length;
 
             //logische Operatoren
@@ -58,8 +57,7 @@ namespace OperatorenGL
 
             bool isInRange = eineZahl > 0 || eineZahl < 10;
             isEqual = !isInRange;
-
-
+            
         }
     }
 }
