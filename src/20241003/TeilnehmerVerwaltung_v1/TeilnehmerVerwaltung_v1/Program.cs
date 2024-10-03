@@ -39,13 +39,31 @@ namespace TeilnehmerVerwaltung_v1
             Console.Write("Wohnort: \t");
             ort = Console.ReadLine();
 
-            Console.Write("Plz: \t\t");
-            inputString = Console.ReadLine();
-            plz = int.Parse(inputString);
+            try
+            {
+                Console.Write("Plz: \t\t");
+                inputString = Console.ReadLine();
+                plz = int.Parse(inputString);
 
-            Console.Write("Geburtsdatum: \t");
-            inputString = Console.ReadLine();
-            birthday = DateTime.Parse(inputString);
+                Console.Write("Geburtsdatum: \t");
+                inputString = Console.ReadLine();
+                birthday = DateTime.Parse(inputString);
+            }           
+            catch (FormatException ex)
+            {
+                Console.WriteLine("Schade. Falsches Format!");
+                plz = 1111;
+                birthday = DateTime.MinValue;
+            }
+            catch (Exception ex2)
+            {
+                Console.WriteLine("Schade.");
+            }
+            finally
+            {
+                Console.WriteLine("Jetzt gehts aber weiter...");
+            }
+
 
             //output data
             Console.WriteLine("\nTEILNEHMER DATEN\n");
