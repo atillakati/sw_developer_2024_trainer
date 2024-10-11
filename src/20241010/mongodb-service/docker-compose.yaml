@@ -7,7 +7,9 @@ services:
       - 27017:27017
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin                
-      - MONGO_INITDB_ROOT_PASSWORD=password   
+      - MONGO_INITDB_ROOT_PASSWORD=password
+    volumes:
+      - mongo_database:/data/db:rw
 
   mongo-express:
     image: mongo-express
@@ -20,3 +22,6 @@ services:
       - ME_CONFIG_MONGODB_ADMINPASSWORD=password
       - ME_CONFIG_MONGODB_SERVER=mongodb 
       - ME_CONFIG_BASICAUTH=false
+
+volumes:
+  mongo_database:  
