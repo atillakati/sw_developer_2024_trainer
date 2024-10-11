@@ -1,7 +1,4 @@
-﻿using MongoDB.Driver;
-using SharpCompress.Readers.Rar;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
 
 
@@ -9,14 +6,11 @@ namespace Wifi.MongoDbLibrary
 {
     internal class Program
     {
-        private static IMongoCollection<Teilnehmer> _teilnehmerCollection;
-        const string connectionUri = "mongodb://admin:password@localhost:27017";
-
         static void Main(string[] args)
         {
-            Setup();
+            MongoDbRepository db = new MongoDbRepository("mongodb://admin:password@localhost:27017", "teilnehmer-db", "teilnehmer");
 
-            var data = GetAll();
+            var data = db.GetAll();
             if (data != null && data.Any())
             {
                 foreach (var teilnehmer in data)
@@ -52,7 +46,7 @@ namespace Wifi.MongoDbLibrary
 
             foreach (var teilnehmer in teilnehmerListe)
             {
-                Teilnehmer existingTeilnehmer = GetTeilnehmerByNachname(teilnehmer.Nachname);
+                Teilnehmer existingTeilnehmer = db.GetTeilnehmerByNachname(teilnehmer.Nachname);
 
                 if (existingTeilnehmer != null)
                 {
@@ -60,57 +54,17 @@ namespace Wifi.MongoDbLibrary
                 }
                 else
                 {
-                    WriteTeilnehmer(teilnehmer);
+                    db.WriteTeilnehmer(teilnehmer);
                 }
             }
 
-            Teilnehmer foundTeilnehmer = GetTeilnehmerById(readTeilnehmerListe[0].Id);
+            Teilnehmer foundTeilnehmer = db.GetTeilnehmerById(readTeilnehmerListe[0].Id);
 
         }
 
         private static void ShowTeilnehmerData(Teilnehmer teilnehmer)
         {
             Console.WriteLine($"{teilnehmer.Vorname} {teilnehmer.Nachname} [{teilnehmer.Geburtsdatum.Year}] | {teilnehmer.Plz} {teilnehmer.Ort}");
-        }
-
-        private static Teilnehmer GetTeilnehmerByNachname(string teilnehmerNachname)
-        {
-            // Creates a filter for all documents that have a "name" value of "Mongo's Pizza"
-            var filter = Builders<Teilnehmer>.Filter.Eq(r => r.Nachname, teilnehmerNachname);
-
-            // Finds the newly inserted document by using the filter
-            return _teilnehmerCollection.Find(filter).FirstOrDefault();
-        }
-
-        private static IEnumerable<Teilnehmer> GetAll()
-        {
-            // Creates a filter for all documents that have a "name" value of "Mongo's Pizza"
-            var filter = Builders<Teilnehmer>.Filter.Empty;
-
-            // Finds the newly inserted document by using the filter
-            return _teilnehmerCollection.Find(filter).ToList();
-        }
-
-        private static Teilnehmer GetTeilnehmerById(Guid id)
-        {
-            // Creates a filter for all documents that have a "name" value of "Mongo's Pizza"
-            var filter = Builders<Teilnehmer>.Filter.Eq(r => r.Id, id);
-
-            // Finds the newly inserted document by using the filter
-            return _teilnehmerCollection.Find(filter).FirstOrDefault();
-        }
-
-        private static void WriteTeilnehmer(Teilnehmer teilnehmer)
-        {
-            _teilnehmerCollection.InsertOne(teilnehmer);
-        }
-
-        private static void Setup()
-        {
-            // Establishes the connection to MongoDB and accesses the restaurants database
-            var mongoClient = new MongoClient(connectionUri);
-            var teilnehmerDb = mongoClient.GetDatabase("teilnehmer-db");
-            _teilnehmerCollection = teilnehmerDb.GetCollection<Teilnehmer>("teilnehmer");
         }
     }
 }
