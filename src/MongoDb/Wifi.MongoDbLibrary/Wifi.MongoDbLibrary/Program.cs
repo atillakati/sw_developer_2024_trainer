@@ -1,6 +1,8 @@
 ﻿using MongoDB.Driver;
 using SharpCompress.Readers.Rar;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 
 namespace Wifi.MongoDbLibrary
@@ -13,6 +15,17 @@ namespace Wifi.MongoDbLibrary
         static void Main(string[] args)
         {
             Setup();
+
+            var data = GetAll();
+            if (data != null && data.Any())
+            {
+                foreach (var teilnehmer in data)
+                {
+                    ShowTeilnehmerData(teilnehmer);
+                }
+
+                return;
+            }
 
             Teilnehmer[] teilnehmerListe = new Teilnehmer[]
             {
@@ -39,7 +52,7 @@ namespace Wifi.MongoDbLibrary
 
             foreach (var teilnehmer in teilnehmerListe)
             {
-                Teilnehmer existingTeilnehmer = ReadEntryByNachname(teilnehmer.Nachname);
+                Teilnehmer existingTeilnehmer = GetTeilnehmerByNachname(teilnehmer.Nachname);
 
                 if (existingTeilnehmer != null)
                 {
@@ -47,15 +60,20 @@ namespace Wifi.MongoDbLibrary
                 }
                 else
                 {
-                    WriteEntry(teilnehmer);
+                    WriteTeilnehmer(teilnehmer);
                 }
             }
 
-            Teilnehmer foundTeilnehmer = ReadEntryById(readTeilnehmerListe[0].Id);
+            Teilnehmer foundTeilnehmer = GetTeilnehmerById(readTeilnehmerListe[0].Id);
 
         }
 
-        private static Teilnehmer ReadEntryByNachname(string teilnehmerNachname)
+        private static void ShowTeilnehmerData(Teilnehmer teilnehmer)
+        {
+            Console.WriteLine($"{teilnehmer.Vorname} {teilnehmer.Nachname} [{teilnehmer.Geburtsdatum.Year}] | {teilnehmer.Plz} {teilnehmer.Ort}");
+        }
+
+        private static Teilnehmer GetTeilnehmerByNachname(string teilnehmerNachname)
         {
             // Creates a filter for all documents that have a "name" value of "Mongo's Pizza"
             var filter = Builders<Teilnehmer>.Filter.Eq(r => r.Nachname, teilnehmerNachname);
@@ -64,7 +82,16 @@ namespace Wifi.MongoDbLibrary
             return _teilnehmerCollection.Find(filter).FirstOrDefault();
         }
 
-        private static Teilnehmer ReadEntryById(Guid id)
+        private static IEnumerable<Teilnehmer> GetAll()
+        {
+            // Creates a filter for all documents that have a "name" value of "Mongo's Pizza"
+            var filter = Builders<Teilnehmer>.Filter.Empty;
+
+            // Finds the newly inserted document by using the filter
+            return _teilnehmerCollection.Find(filter).ToList();
+        }
+
+        private static Teilnehmer GetTeilnehmerById(Guid id)
         {
             // Creates a filter for all documents that have a "name" value of "Mongo's Pizza"
             var filter = Builders<Teilnehmer>.Filter.Eq(r => r.Id, id);
@@ -73,7 +100,7 @@ namespace Wifi.MongoDbLibrary
             return _teilnehmerCollection.Find(filter).FirstOrDefault();
         }
 
-        private static void WriteEntry(Teilnehmer teilnehmer)
+        private static void WriteTeilnehmer(Teilnehmer teilnehmer)
         {
             _teilnehmerCollection.InsertOne(teilnehmer);
         }
