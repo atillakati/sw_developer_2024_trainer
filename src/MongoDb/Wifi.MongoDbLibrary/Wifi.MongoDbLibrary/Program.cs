@@ -10,6 +10,9 @@ namespace Wifi.MongoDbLibrary
         {
             MongoDbRepository db = new MongoDbRepository("mongodb://admin:password@localhost:27017", "teilnehmer-db", "teilnehmer");
 
+            bool result = db.DoesDbExist("teilnehmer-db");
+            Console.WriteLine($"Datenbank gefunden: {result}");
+
             var data = db.GetAll();
             if (data != null && data.Any())
             {

@@ -24,6 +24,23 @@ namespace Wifi.MongoDbLibrary
             Setup();
         }
 
+        public bool DoesDbExist(string databaseName)
+        {
+            var mongoClient = new MongoClient(_connectionUri);
+            var dbList = mongoClient.ListDatabases().ToList();
+
+            foreach (var dbInfo in dbList)
+            {
+                var element = dbInfo.GetElement("name");
+                if (element.Value.ToString() == databaseName)
+                {
+                    return true;    
+                }
+            }
+
+            return false;
+        }
+
         public Teilnehmer GetTeilnehmerByNachname(string teilnehmerNachname)
         {
             // Creates a filter for all documents that have a "name" value of "Mongo's Pizza"
