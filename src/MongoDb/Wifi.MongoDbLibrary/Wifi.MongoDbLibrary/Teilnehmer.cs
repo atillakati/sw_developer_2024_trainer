@@ -8,12 +8,13 @@ namespace Wifi.MongoDbLibrary
     public class Teilnehmer
     {
         [BsonId]
+        [BsonGuidRepresentation(GuidRepresentation.Standard)]
         public Guid Id;
 
         public string Vorname;
         public string Nachname;
         public string Ort;
         public int Plz;
-        public DateTime Geburtsdatum;
+        public DateTime Geburtstag;
     }
 }
