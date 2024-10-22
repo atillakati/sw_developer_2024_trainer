@@ -1,6 +1,6 @@
-﻿namespace Wifi.MongoDbLibrary.DemoData
+﻿namespace Wifi.MongoDbLibrary.DemoData.Entities
 {
-    public class Rootobject
+    public class RandomPerson
     {
         public Result[] results { get; set; }
         public Info info { get; set; }

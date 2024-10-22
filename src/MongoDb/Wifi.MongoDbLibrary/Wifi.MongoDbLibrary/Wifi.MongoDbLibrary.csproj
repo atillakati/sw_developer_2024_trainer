@@ -44,20 +44,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DemoData\Coordinates.cs" />
-    <Compile Include="DemoData\DayOfBirth.cs" />
-    <Compile Include="DemoData\DemoDataHelper.cs" />
-    <Compile Include="DemoData\Picture.cs" />
-    <Compile Include="DemoData\Id.cs" />
-    <Compile Include="DemoData\Info.cs" />
-    <Compile Include="DemoData\Location.cs" />
-    <Compile Include="DemoData\Login.cs" />
-    <Compile Include="DemoData\Name.cs" />
-    <Compile Include="DemoData\Registered.cs" />
-    <Compile Include="DemoData\Result.cs" />
-    <Compile Include="DemoData\Rootobject.cs" />
-    <Compile Include="DemoData\Street.cs" />
-    <Compile Include="DemoData\Timezone.cs" />
+    <Compile Include="DemoData\RandomTeilnehmer.cs" />
+    <Compile Include="DemoData\Entities\Coordinates.cs" />
+    <Compile Include="DemoData\Entities\DayOfBirth.cs" />
+    <Compile Include="DemoData\DemoDataHelperBase.cs" />
+    <Compile Include="DemoData\Entities\PictureLink.cs" />
+    <Compile Include="DemoData\Entities\Id.cs" />
+    <Compile Include="DemoData\Entities\Info.cs" />
+    <Compile Include="DemoData\Entities\Location.cs" />
+    <Compile Include="DemoData\Entities\Login.cs" />
+    <Compile Include="DemoData\Entities\Name.cs" />
+    <Compile Include="DemoData\Entities\Registered.cs" />
+    <Compile Include="DemoData\Entities\Result.cs" />
+    <Compile Include="DemoData\Entities\RandomPerson.cs" />
+    <Compile Include="DemoData\Entities\Street.cs" />
+    <Compile Include="DemoData\Entities\Timezone.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MongoDbRepository.cs" />

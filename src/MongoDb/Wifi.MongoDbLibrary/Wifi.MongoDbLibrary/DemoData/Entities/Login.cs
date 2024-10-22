@@ -1,4 +1,4 @@
-﻿namespace Wifi.MongoDbLibrary.DemoData
+﻿namespace Wifi.MongoDbLibrary.DemoData.Entities
 {
     public class Login
     {

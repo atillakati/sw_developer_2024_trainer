@@ -1,9 +1,9 @@
 ﻿
 
 
-namespace Wifi.MongoDbLibrary.DemoData
+namespace Wifi.MongoDbLibrary.DemoData.Entities
 {
-    public class Picture
+    public class PictureLink
     {
         public string large { get; set; }
         public string medium { get; set; }

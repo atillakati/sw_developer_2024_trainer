@@ -1,4 +1,4 @@
-﻿namespace Wifi.MongoDbLibrary.DemoData
+﻿namespace Wifi.MongoDbLibrary.DemoData.Entities
 {
     public class Result
     {
@@ -12,7 +12,7 @@
         public string phone { get; set; }
         public string cell { get; set; }
         public Id id { get; set; }
-        public Picture picture { get; set; }
+        public PictureLink picture { get; set; }
         public string nat { get; set; }
     }
 }

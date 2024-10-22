@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace Wifi.MongoDbLibrary
@@ -41,9 +42,9 @@ namespace Wifi.MongoDbLibrary
             return false;
         }
 
-        public Teilnehmer GetTeilnehmerByNachname(string teilnehmerNachname)
+        public Teilnehmer GetByNachname(string teilnehmerNachname)
         {
-            // Creates a filter for all documents that have a "name" value of "Mongo's Pizza"
+            // Creates a filter for all documents that have a "Nachname" value of teilnehmerNachname
             var filter = Builders<Teilnehmer>.Filter.Eq(r => r.Nachname, teilnehmerNachname);
 
             // Finds the newly inserted document by using the filter
@@ -52,25 +53,39 @@ namespace Wifi.MongoDbLibrary
 
         public IEnumerable<Teilnehmer> GetAll()
         {
-            // Creates a filter for all documents that have a "name" value of "Mongo's Pizza"
             var filter = Builders<Teilnehmer>.Filter.Empty;
 
             // Finds the newly inserted document by using the filter
             return _teilnehmerCollection.Find(filter).ToList();
         }
 
-        public Teilnehmer GetTeilnehmerById(Guid id)
+        public Teilnehmer GetById(ObjectId id)
         {
-            // Creates a filter for all documents that have a "name" value of "Mongo's Pizza"
+            //var filter = Builders<Teilnehmer>.Filter.Eq(r => r.Id == id);
+
+            // Finds the newly inserted document by using the filter
+            return _teilnehmerCollection.Find(x => x.Id == id).FirstOrDefault();
+        }
+
+        public void Write(Teilnehmer teilnehmer)
+        {
+            if (teilnehmer == null)
+            {
+                return;
+            }
+
+            _teilnehmerCollection.InsertOne(teilnehmer);
+        }
+
+        public bool Delete(ObjectId id)
+        {
+            // Creates a filter for all documents that have a "_id" value of id
             var filter = Builders<Teilnehmer>.Filter.Eq(r => r.Id, id);
 
             // Finds the newly inserted document by using the filter
-            return _teilnehmerCollection.Find(filter).FirstOrDefault();
-        }
+            var result = _teilnehmerCollection.DeleteOne(filter);
 
-        public void WriteTeilnehmer(Teilnehmer teilnehmer)
-        {
-            _teilnehmerCollection.InsertOne(teilnehmer);
+            return result.IsAcknowledged;
         }
 
         private void Setup()

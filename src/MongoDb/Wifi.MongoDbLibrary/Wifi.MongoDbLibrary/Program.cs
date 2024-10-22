@@ -9,21 +9,70 @@ namespace Wifi.MongoDbLibrary
     {
         static void Main(string[] args)
         {
-            MongoDbRepository db = new MongoDbRepository("mongodb://admin:password@localhost:27017", "teilnehmer-db",
-                "teilnehmer");
+            MongoDbRepository db = new MongoDbRepository("mongodb://admin:password@localhost:27017", "teilnehmer-db", "teilnehmer");
 
             bool result = db.DoesDbExist("teilnehmer-db");
             Console.WriteLine($"Datenbank gefunden: {result}");
 
-            DemoDataHelper demoDataHelper = new DemoDataHelper();
-            var demoPersons = demoDataHelper.GetRandomPersonList(2);
+            RandomTeilnehmer helper = new RandomTeilnehmer();
+            var demoPersons = helper.GetRandomPersonList(10);
+
+            Console.WriteLine($"Datenquelle: {helper.BaseUri}{helper.RequestUri}\n");
 
             foreach (var person in demoPersons)
             {
-                db.WriteTeilnehmer(person);
+                db.Write(person);
+                ShowTeilnehmerData(person);
             }
 
-            Console.WriteLine($"{demoPersons.Count()} Personen wurden in die Datenbank geschrieben.");
+            Console.WriteLine($"\n{demoPersons.Count()} Personen wurden in die Datenbank geschrieben.");
+
+            var aPerson = helper.GetRandomPerson();
+            if (aPerson != null)
+            {
+                ShowTeilnehmerData(aPerson);
+            }
+
+            Console.WriteLine("\nDelete person tests:");
+            DeleteTests(db);
+
+            Console.WriteLine("\nGetById tests:");
+            GetByIdTests(db);
+        }
+
+        private static void GetByIdTests(MongoDbRepository db)
+        {
+            var personList = db.GetAll();
+            foreach (var person in personList)
+            {
+                var data = db.GetById(person.Id);
+                ShowTeilnehmerData(data);
+            }
+        }
+
+        private static void DeleteTests(MongoDbRepository db)
+        {
+            int counter = 0;
+            var personList = db.GetAll().ToArray();
+
+            foreach (var person in personList)
+            {
+                Console.Write($"Removing person {person.Vorname} {person.Nachname} ");
+                if (db.Delete(person.Id))
+                {
+                    Console.WriteLine("..done.");
+                }
+                else
+                {
+                    Console.WriteLine("..failed.");
+                }
+
+                counter++;
+                if (counter > 5)
+                {
+                    break;
+                }
+            }
         }
 
         //static void Main(string[] args)
@@ -69,7 +118,7 @@ namespace Wifi.MongoDbLibrary
 
         //    foreach (var teilnehmer in teilnehmerListe)
         //    {
-        //        Teilnehmer existingTeilnehmer = db.GetTeilnehmerByNachname(teilnehmer.Nachname);
+        //        Teilnehmer existingTeilnehmer = db.GetByNachname(teilnehmer.Nachname);
 
         //        if (existingTeilnehmer != null)
         //        {
@@ -77,16 +126,21 @@ namespace Wifi.MongoDbLibrary
         //        }
         //        else
         //        {
-        //            db.WriteTeilnehmer(teilnehmer);
+        //            db.Write(teilnehmer);
         //        }
         //    }
 
-        //    Teilnehmer foundTeilnehmer = db.GetTeilnehmerById(readTeilnehmerListe[0].Id);
+        //    Teilnehmer foundTeilnehmer = db.GetById(readTeilnehmerListe[0].Id);
 
         //}
 
         private static void ShowTeilnehmerData(Teilnehmer teilnehmer)
         {
+            if (teilnehmer == null)
+            {
+                return;
+            }
+
             Console.WriteLine($"{teilnehmer.Vorname} {teilnehmer.Nachname} [{teilnehmer.Geburtstag.Year}] | {teilnehmer.Plz} {teilnehmer.Ort}");
         }
     }
