@@ -4,15 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3F73C864-A518-42CF-AD79-73206FFAB4B7}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <RootNamespace>Wifi.MongoDbLibrary</RootNamespace>
-    <AssemblyName>Wifi.MongoDbLibrary</AssemblyName>
+    <ProjectGuid>{23FF3643-75E3-4CD0-AD1A-8F5ED616A265}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Wifi.MongoDbLibrary.TestApplication</RootNamespace>
+    <AssemblyName>Wifi.MongoDbLibrary.TestApplication</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,9 +32,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -47,34 +43,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DemoData\Entities\Coordinates.cs" />
-    <Compile Include="DemoData\Entities\DayOfBirth.cs" />
-    <Compile Include="DemoData\DemoDataHelperBase.cs" />
-    <Compile Include="DemoData\Entities\PictureLink.cs" />
-    <Compile Include="DemoData\Entities\Id.cs" />
-    <Compile Include="DemoData\Entities\Info.cs" />
-    <Compile Include="DemoData\Entities\Location.cs" />
-    <Compile Include="DemoData\Entities\Login.cs" />
-    <Compile Include="DemoData\Entities\Name.cs" />
-    <Compile Include="DemoData\Entities\Registered.cs" />
-    <Compile Include="DemoData\Entities\Result.cs" />
-    <Compile Include="DemoData\RandomPerson.cs" />
-    <Compile Include="DemoData\Entities\Street.cs" />
-    <Compile Include="DemoData\Entities\Timezone.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="MongoDbRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="MongoDB.Driver">
+    <ProjectReference Include="..\Wifi.MongoDbLibrary.MongoCustom\Wifi.MongoDbLibrary.MongoCustom.csproj">
+      <Project>{a0874c29-cc14-4f94-b941-493abc8412cd}</Project>
+      <Name>Wifi.MongoDbLibrary.MongoCustom</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wifi.MongoDbLibrary\Wifi.MongoDbLibrary.csproj">
+      <Project>{3f73c864-a518-42cf-ad79-73206ffab4b7}</Project>
+      <Name>Wifi.MongoDbLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="ConsoleTableExt">
+      <Version>3.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="MongoDB.Bson">
       <Version>3.0.0</Version>
     </PackageReference>
-    <PackageReference Include="RestSharp">
-      <Version>112.1.0</Version>
-    </PackageReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

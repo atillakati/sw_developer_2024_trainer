@@ -1,4 +1,6 @@
-﻿namespace Wifi.MongoDbLibrary.DemoData.Entities
+﻿using Wifi.MongoDbLibrary.DemoData.Entities;
+
+namespace Wifi.MongoDbLibrary.DemoData
 {
     public class RandomPerson
     {

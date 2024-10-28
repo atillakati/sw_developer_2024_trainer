@@ -1,15 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using Wifi.MongoDbLibrary.DemoData;
+using ConsoleTableExt;
+using MongoDB.Driver;
+using Wifi.MongoDbLibrary.MongoCustom;
 
 
-namespace Wifi.MongoDbLibrary
+namespace Wifi.MongoDbLibrary.TestApplication
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            MongoDbRepository db = new MongoDbRepository("mongodb://admin:password@localhost:27017", "teilnehmer-db", "teilnehmer");
+            var db = new MongoDbRepository<Teilnehmer>("mongodb://admin:password@localhost:27017", "teilnehmer-db", "teilnehmer");
 
             bool result = db.DoesDbExist("teilnehmer-db");
             Console.WriteLine($"Datenbank gefunden: {result}");
@@ -22,8 +25,9 @@ namespace Wifi.MongoDbLibrary
             foreach (var person in demoPersons)
             {
                 db.Write(person);
-                ShowTeilnehmerData(person);
             }
+
+            ShowTeilnehmerData(demoPersons);
 
             Console.WriteLine($"\n{demoPersons.Count()} Personen wurden in die Datenbank geschrieben.");
 
@@ -40,17 +44,19 @@ namespace Wifi.MongoDbLibrary
             GetByIdTests(db);
         }
 
-        private static void GetByIdTests(MongoDbRepository db)
+        private static void GetByIdTests(MongoDbRepository<Teilnehmer> db)
         {
             var personList = db.GetAll();
             foreach (var person in personList)
             {
-                var data = db.GetById(person.Id);
+                var filter = Builders<Teilnehmer>.Filter.Eq(x => x.Id, person.Id);
+
+                var data = db.GetByFilter(filter);
                 ShowTeilnehmerData(data);
             }
         }
 
-        private static void DeleteTests(MongoDbRepository db)
+        private static void DeleteTests(MongoDbRepository<Teilnehmer> db)
         {
             int counter = 0;
             var personList = db.GetAll().ToArray();
@@ -58,7 +64,8 @@ namespace Wifi.MongoDbLibrary
             foreach (var person in personList)
             {
                 Console.Write($"Removing person {person.Vorname} {person.Nachname} ");
-                if (db.Delete(person.Id))
+                var filter = Builders<Teilnehmer>.Filter.Eq(x => x.Id, person.Id);
+                if (db.Delete(filter))
                 {
                     Console.WriteLine("..done.");
                 }
@@ -130,7 +137,7 @@ namespace Wifi.MongoDbLibrary
         //        }
         //    }
 
-        //    Teilnehmer foundTeilnehmer = db.GetById(readTeilnehmerListe[0].Id);
+        //    Teilnehmer foundTeilnehmer = db.GetByFilter(readTeilnehmerListe[0].Id);
 
         //}
 
@@ -142,6 +149,21 @@ namespace Wifi.MongoDbLibrary
             }
 
             Console.WriteLine($"{teilnehmer.Vorname} {teilnehmer.Nachname} [{teilnehmer.Geburtstag.Year}] | {teilnehmer.Plz} {teilnehmer.Ort}");
+        }
+
+        private static void ShowTeilnehmerData(IEnumerable<Teilnehmer> teilnehmerList)
+        {
+            var teilnehmers = teilnehmerList.ToList();
+
+            if (!teilnehmers.Any())
+            {
+                return;
+            }
+
+            ConsoleTableBuilder
+                .From(teilnehmers)
+                .WithFormat(ConsoleTableBuilderFormat.Default)
+                .ExportAndWriteLine();
         }
     }
 }

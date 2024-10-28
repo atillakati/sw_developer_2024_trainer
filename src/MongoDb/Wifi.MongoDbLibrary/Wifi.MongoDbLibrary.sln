@@ -5,6 +5,10 @@ VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wifi.MongoDbLibrary", "Wifi.MongoDbLibrary\Wifi.MongoDbLibrary.csproj", "{3F73C864-A518-42CF-AD79-73206FFAB4B7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wifi.MongoDbLibrary.TestApplication", "Wifi.MongoDbLibrary.TestApplication\Wifi.MongoDbLibrary.TestApplication.csproj", "{23FF3643-75E3-4CD0-AD1A-8F5ED616A265}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wifi.MongoDbLibrary.MongoCustom", "Wifi.MongoDbLibrary.MongoCustom\Wifi.MongoDbLibrary.MongoCustom.csproj", "{A0874C29-CC14-4F94-B941-493ABC8412CD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{3F73C864-A518-42CF-AD79-73206FFAB4B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F73C864-A518-42CF-AD79-73206FFAB4B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F73C864-A518-42CF-AD79-73206FFAB4B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23FF3643-75E3-4CD0-AD1A-8F5ED616A265}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23FF3643-75E3-4CD0-AD1A-8F5ED616A265}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23FF3643-75E3-4CD0-AD1A-8F5ED616A265}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23FF3643-75E3-4CD0-AD1A-8F5ED616A265}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0874C29-CC14-4F94-B941-493ABC8412CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0874C29-CC14-4F94-B941-493ABC8412CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0874C29-CC14-4F94-B941-493ABC8412CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0874C29-CC14-4F94-B941-493ABC8412CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

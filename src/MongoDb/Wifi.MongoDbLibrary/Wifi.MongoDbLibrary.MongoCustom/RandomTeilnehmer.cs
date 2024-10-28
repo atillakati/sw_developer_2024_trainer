@@ -1,6 +1,6 @@
-﻿using Wifi.MongoDbLibrary.DemoData.Entities;
+﻿using Wifi.MongoDbLibrary.DemoData;
 
-namespace Wifi.MongoDbLibrary.DemoData
+namespace Wifi.MongoDbLibrary.MongoCustom
 {
     public class RandomTeilnehmer : DemoDataHelperBase<Teilnehmer>
     {

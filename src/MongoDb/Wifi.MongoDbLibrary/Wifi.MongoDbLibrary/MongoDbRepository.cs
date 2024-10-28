@@ -5,11 +5,11 @@ using MongoDB.Driver;
 
 namespace Wifi.MongoDbLibrary
 {
-    public class MongoDbRepository
+    public class MongoDbRepository<T>
     {
         private readonly string _databaseName;
         private readonly string _collectionName;
-        private IMongoCollection<Teilnehmer> _teilnehmerCollection;
+        private IMongoCollection<T> _teilnehmerCollection;
         private string _connectionUri = "mongodb://admin:password@localhost:27017";
 
         public MongoDbRepository(string connectionUri, string databaseName, string collectionName)
@@ -42,45 +42,45 @@ namespace Wifi.MongoDbLibrary
             return false;
         }
 
-        public Teilnehmer GetByNachname(string teilnehmerNachname)
-        {
-            // Creates a filter for all documents that have a "Nachname" value of teilnehmerNachname
-            var filter = Builders<Teilnehmer>.Filter.Eq(r => r.Nachname, teilnehmerNachname);
+        //public T GetByNachname(FieldDefinition<T,string> nachnameField,  string teilnehmerNachname)
+        //{
+        //    // Creates a filter for all documents that have a "Nachname" value of teilnehmerNachname
+        //    var filter = Builders<T>.Filter.Eq(nachnameField, teilnehmerNachname);
 
-            // Finds the newly inserted document by using the filter
-            return _teilnehmerCollection.Find(filter).FirstOrDefault();
-        }
+        //    // Finds the newly inserted document by using the filter
+        //    return _teilnehmerCollection.Find(filter).FirstOrDefault();
+        //}
 
-        public IEnumerable<Teilnehmer> GetAll()
+        public IEnumerable<T> GetAll()
         {
-            var filter = Builders<Teilnehmer>.Filter.Empty;
+            var filter = Builders<T>.Filter.Empty;
 
             // Finds the newly inserted document by using the filter
             return _teilnehmerCollection.Find(filter).ToList();
         }
 
-        public Teilnehmer GetById(ObjectId id)
+        public T GetByFilter(FilterDefinition<T> filter)
         {
             //var filter = Builders<Teilnehmer>.Filter.Eq(r => r.Id == id);
 
             // Finds the newly inserted document by using the filter
-            return _teilnehmerCollection.Find(x => x.Id == id).FirstOrDefault();
+            return _teilnehmerCollection.Find(filter).FirstOrDefault();
         }
 
-        public void Write(Teilnehmer teilnehmer)
+        public void Write(T dataToWrite)
         {
-            if (teilnehmer == null)
+            if (dataToWrite == null)
             {
                 return;
             }
 
-            _teilnehmerCollection.InsertOne(teilnehmer);
+            _teilnehmerCollection.InsertOne(dataToWrite);
         }
 
-        public bool Delete(ObjectId id)
+        public bool Delete(FilterDefinition<T> filter)
         {
             // Creates a filter for all documents that have a "_id" value of id
-            var filter = Builders<Teilnehmer>.Filter.Eq(r => r.Id, id);
+            //var filter = Builders<T>.Filter.Eq(idField, id);
 
             // Finds the newly inserted document by using the filter
             var result = _teilnehmerCollection.DeleteOne(filter);
@@ -94,7 +94,7 @@ namespace Wifi.MongoDbLibrary
             var mongoClient = new MongoClient(_connectionUri);
 
             var teilnehmerDb = mongoClient.GetDatabase(_databaseName);
-            _teilnehmerCollection = teilnehmerDb.GetCollection<Teilnehmer>(_collectionName);
+            _teilnehmerCollection = teilnehmerDb.GetCollection<T>(_collectionName);
         }
     }
 }
