@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F928CE84-9577-4A80-B70E-EE1F00FC335C}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>Wifi.TeilnehmerVerwaltungV4.Application</RootNamespace>
-    <AssemblyName>Wifi.TeilnehmerVerwaltungV4.Application</AssemblyName>
+    <ProjectGuid>{4D569B65-AB58-4B40-B764-617BBAF457DA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Wifi.TeilnehmerVerwaltungV4.Core</RootNamespace>
+    <AssemblyName>Wifi.TeilnehmerVerwaltungV4.Core</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,21 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Teilnehmer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Wifi.TeilnehmerVerwaltungV4.Core\Wifi.TeilnehmerVerwaltungV4.Core.csproj">
-      <Project>{4d569b65-ab58-4b40-b764-617bbaf457da}</Project>
-      <Name>Wifi.TeilnehmerVerwaltungV4.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Wifi.TeilnehmerVerwaltungV4.DemoDataProvider\Wifi.TeilnehmerVerwaltungV4.DemoDataProvider.csproj">
-      <Project>{92bf5693-82e9-4257-83c5-d5f7488d3a61}</Project>
-      <Name>Wifi.TeilnehmerVerwaltungV4.DemoDataProvider</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

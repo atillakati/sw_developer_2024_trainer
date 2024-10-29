@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wifi.TeilnehmerVerwaltungV4
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wifi.TeilnehmerVerwaltungV4.Repository", "Wifi.TeilnehmerVerwaltungV4.Repository\Wifi.TeilnehmerVerwaltungV4.Repository.csproj", "{AEBE1518-C9AD-4C32-A562-02374098BEBE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wifi.TeilnehmerVerwaltungV4.Core", "Wifi.TeilnehmerVerwaltungV4.Core\Wifi.TeilnehmerVerwaltungV4.Core.csproj", "{4D569B65-AB58-4B40-B764-617BBAF457DA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{AEBE1518-C9AD-4C32-A562-02374098BEBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AEBE1518-C9AD-4C32-A562-02374098BEBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AEBE1518-C9AD-4C32-A562-02374098BEBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D569B65-AB58-4B40-B764-617BBAF457DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D569B65-AB58-4B40-B764-617BBAF457DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D569B65-AB58-4B40-B764-617BBAF457DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D569B65-AB58-4B40-B764-617BBAF457DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
