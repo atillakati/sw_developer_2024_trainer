@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
@@ -42,15 +43,6 @@ namespace Wifi.MongoDbLibrary
             return false;
         }
 
-        //public T GetByNachname(FieldDefinition<T,string> nachnameField,  string teilnehmerNachname)
-        //{
-        //    // Creates a filter for all documents that have a "Nachname" value of teilnehmerNachname
-        //    var filter = Builders<T>.Filter.Eq(nachnameField, teilnehmerNachname);
-
-        //    // Finds the newly inserted document by using the filter
-        //    return _teilnehmerCollection.Find(filter).FirstOrDefault();
-        //}
-
         public IEnumerable<T> GetAll()
         {
             var filter = Builders<T>.Filter.Empty;
@@ -59,9 +51,9 @@ namespace Wifi.MongoDbLibrary
             return _teilnehmerCollection.Find(filter).ToList();
         }
 
-        public T GetByFilter(FilterDefinition<T> filter)
+        public T GetByFilter(Expression<Func<T, bool>> filterExpression)
         {
-            //var filter = Builders<Teilnehmer>.Filter.Eq(r => r.Id == id);
+            var filter = Builders<T>.Filter.Where(filterExpression);
 
             // Finds the newly inserted document by using the filter
             return _teilnehmerCollection.Find(filter).FirstOrDefault();
@@ -77,10 +69,10 @@ namespace Wifi.MongoDbLibrary
             _teilnehmerCollection.InsertOne(dataToWrite);
         }
 
-        public bool Delete(FilterDefinition<T> filter)
+        public bool Delete(Expression<Func<T, bool>> filterExpression)
         {
             // Creates a filter for all documents that have a "_id" value of id
-            //var filter = Builders<T>.Filter.Eq(idField, id);
+            var filter = Builders<T>.Filter.Where(filterExpression);
 
             // Finds the newly inserted document by using the filter
             var result = _teilnehmerCollection.DeleteOne(filter);

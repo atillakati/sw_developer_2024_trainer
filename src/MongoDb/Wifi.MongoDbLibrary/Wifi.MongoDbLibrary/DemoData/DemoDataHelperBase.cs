@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using RestSharp;
-using Wifi.MongoDbLibrary.DemoData.Entities;
 
 
 namespace Wifi.MongoDbLibrary.DemoData
@@ -36,13 +35,13 @@ namespace Wifi.MongoDbLibrary.DemoData
         /// </summary>
         /// <param name="count">Count of persons to return</param>
         /// <returns></returns>
-        public IEnumerable<T> GetRandomPersonList(int count)
+        public IEnumerable<T> GetRandomDataList(int count)
         {
             var persons = new List<T>();
 
             for (int i = 0; i < count; i++)
             {
-                var person = GetRandomPerson();
+                var person = GetRandomData();
                 if (person == null)
                 {
                     i--;
@@ -59,7 +58,7 @@ namespace Wifi.MongoDbLibrary.DemoData
         /// Returns a randomly received person data. Default source of data: https://randomuser.me/api/
         /// </summary>
         /// <returns></returns>
-        public T GetRandomPerson()
+        public T GetRandomData()
         {
             var person = RetrieveRandomPerson();
             var mappedPersonType = MapResult(person);

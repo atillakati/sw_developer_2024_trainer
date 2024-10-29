@@ -4,7 +4,8 @@ using System.Linq;
 using ConsoleTableExt;
 using MongoDB.Driver;
 using Wifi.MongoDbLibrary.MongoCustom;
-
+using System.Configuration;
+using MongoDB.Bson;
 
 namespace Wifi.MongoDbLibrary.TestApplication
 {
@@ -12,13 +13,27 @@ namespace Wifi.MongoDbLibrary.TestApplication
     {
         static void Main(string[] args)
         {
-            var db = new MongoDbRepository<Teilnehmer>("mongodb://admin:password@localhost:27017", "teilnehmer-db", "teilnehmer");
+            string serverUri = ConfigurationManager.AppSettings["server-uri"];
+            string dbName = ConfigurationManager.AppSettings["database-name"];
+            string collection = ConfigurationManager.AppSettings["collection-name"];
 
-            bool result = db.DoesDbExist("teilnehmer-db");
+            if (string.IsNullOrEmpty(serverUri) || string.IsNullOrEmpty(dbName) || string.IsNullOrEmpty(collection))
+            {
+                Console.WriteLine("Please check your app settings. DB settings required.");
+                return;
+            }
+
+            var db = new MongoDbRepository<Teilnehmer>(serverUri, dbName, collection);
+
+            bool result = db.DoesDbExist(dbName);
             Console.WriteLine($"Datenbank gefunden: {result}");
 
+            RandomLocation randomLocation = new RandomLocation();
+            var geoDataList = randomLocation.GetRandomDataList(10);
+            ShowData(geoDataList);
+
             RandomTeilnehmer helper = new RandomTeilnehmer();
-            var demoPersons = helper.GetRandomPersonList(10);
+            var demoPersons = helper.GetRandomDataList(10);
 
             Console.WriteLine($"Datenquelle: {helper.BaseUri}{helper.RequestUri}\n");
 
@@ -27,11 +42,11 @@ namespace Wifi.MongoDbLibrary.TestApplication
                 db.Write(person);
             }
 
-            ShowTeilnehmerData(demoPersons);
+            ShowData(demoPersons);
 
             Console.WriteLine($"\n{demoPersons.Count()} Personen wurden in die Datenbank geschrieben.");
 
-            var aPerson = helper.GetRandomPerson();
+            var aPerson = helper.GetRandomData();
             if (aPerson != null)
             {
                 ShowTeilnehmerData(aPerson);
@@ -46,14 +61,24 @@ namespace Wifi.MongoDbLibrary.TestApplication
 
         private static void GetByIdTests(MongoDbRepository<Teilnehmer> db)
         {
-            var personList = db.GetAll();
-            foreach (var person in personList)
-            {
-                var filter = Builders<Teilnehmer>.Filter.Eq(x => x.Id, person.Id);
+            ObjectId personId;
 
-                var data = db.GetByFilter(filter);
-                ShowTeilnehmerData(data);
+
+            Console.Write("Please enter a person id: ");
+            try
+            {
+                personId = ObjectId.Parse(Console.ReadLine());
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR: " + ex.Message);
+                return;
+            }
+
+            Console.WriteLine($"Seraching person by ID: {personId}...");
+            var data = db.GetByFilter(x => x.Id == personId);
+
+            ShowTeilnehmerData(data);
         }
 
         private static void DeleteTests(MongoDbRepository<Teilnehmer> db)
@@ -64,8 +89,7 @@ namespace Wifi.MongoDbLibrary.TestApplication
             foreach (var person in personList)
             {
                 Console.Write($"Removing person {person.Vorname} {person.Nachname} ");
-                var filter = Builders<Teilnehmer>.Filter.Eq(x => x.Id, person.Id);
-                if (db.Delete(filter))
+                if (db.Delete(x => x.Id == person.Id))
                 {
                     Console.WriteLine("..done.");
                 }
@@ -148,12 +172,12 @@ namespace Wifi.MongoDbLibrary.TestApplication
                 return;
             }
 
-            Console.WriteLine($"{teilnehmer.Vorname} {teilnehmer.Nachname} [{teilnehmer.Geburtstag.Year}] | {teilnehmer.Plz} {teilnehmer.Ort}");
+            ShowData(new Teilnehmer[] { teilnehmer });
         }
 
-        private static void ShowTeilnehmerData(IEnumerable<Teilnehmer> teilnehmerList)
+        private static void ShowData<T>(IEnumerable<T> dataList) where T : class
         {
-            var teilnehmers = teilnehmerList.ToList();
+            var teilnehmers = dataList.ToList();
 
             if (!teilnehmers.Any())
             {
