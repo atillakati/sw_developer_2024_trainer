@@ -13,49 +13,14 @@ namespace Wifi.TeilnehmerVerwaltungV4.Application
     {
         static void Main(string[] args)
         {
-            var demoData = new DataProvider();
+            var demoData = new RandomTeilnehmerProvider();
 
-            var data = demoData.GetRandomData(500);
+            var data = demoData.GetRandomData(2000);
 
-            Teilnehmer[] teilnehmerListe = MapDemoDataToTeilnehmer(data);
+            var geoPositionProvider = new GeoPositionProvider();
+            var geoPositions = geoPositionProvider.GetRandomData(10);
         }
 
-        private static Teilnehmer[] MapDemoDataToTeilnehmer(RandomData data)
-        {
-            var teilnehmerListe = new List<Teilnehmer>();
-
-            if (data == null)
-            {
-                return null;
-            }
-
-            foreach (var person in data.results)
-            {
-                int plz = 0;
-
-                try
-                {
-                    plz = int.Parse(person.location.postcode.ToString());
-                }
-                catch
-                {
-                    continue;
-                }
-
-                var newTeilnehmer = new Teilnehmer
-                {
-                    Vorname = person.name.first,
-                    Nachname = person.name.last,
-                    Geburtsdatum = person.dob.date,
-                    Ort = person.location.city,
-                    Plz = plz
-                };
-
-                teilnehmerListe.Add(newTeilnehmer);
-
-            }
-
-            return teilnehmerListe.ToArray();
-        }
+        
     }
 }

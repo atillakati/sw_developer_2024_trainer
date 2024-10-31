@@ -1,9 +1,13 @@
 ﻿using RestSharp;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Wifi.TeilnehmerVerwaltungV4.Core;
 using Wifi.TeilnehmerVerwaltungV4.DemoDataProvider.Entities;
 
 namespace Wifi.TeilnehmerVerwaltungV4.DemoDataProvider
 {
-    public class DataProvider
+    public abstract class DataProvider<T>
     {
         private readonly RestClientOptions _options;
         private readonly RestClient _client;
@@ -15,17 +19,29 @@ namespace Wifi.TeilnehmerVerwaltungV4.DemoDataProvider
             _client = new RestClient(_options);
         }
 
-        public RandomData GetRandomData()
+        public T GetRandomData()
         {
+            IEnumerable<T> teilnehmerList;
+
             _request = new RestRequest("/api");
 
-            var randomData = _client.Get<RandomData>(_request);
+            do
+            {
+                //retrieve data from server
+                var randomData = _client.Get<RandomData>(_request);
 
-            return randomData;
+                //map into domain object            
+                teilnehmerList = Map(randomData);
+            }
+            while (!teilnehmerList.Any());
+
+            return teilnehmerList.FirstOrDefault();
         }
 
-        public RandomData GetRandomData(int count)
+        public IEnumerable<T> GetRandomData(int count)
         {
+            var teilnehmerList = new List<T>();
+
             if (count < 1 || count > 5000)
             {
                 return null;
@@ -33,10 +49,22 @@ namespace Wifi.TeilnehmerVerwaltungV4.DemoDataProvider
 
             _request = new RestRequest($"/api/?results={count}");
 
-            var randomData = _client.Get<RandomData>(_request);
+            do
+            {
+                //retrieve data from server
+                var randomData = _client.Get<RandomData>(_request);
 
-            return randomData;
+                //map into domain object            
+                var mappedTeilnehmer = Map(randomData);
 
+                //add to extisting Teilnehmer list
+                teilnehmerList.AddRange(mappedTeilnehmer);
+            }
+            while (teilnehmerList.Count < count);
+
+            return teilnehmerList.GetRange(0, count);
         }
+
+        public abstract IEnumerable<T> Map(RandomData data);        
     }
 }

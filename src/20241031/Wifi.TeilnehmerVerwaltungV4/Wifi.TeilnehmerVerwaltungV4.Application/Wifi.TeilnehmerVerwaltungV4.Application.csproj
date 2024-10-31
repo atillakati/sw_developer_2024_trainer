@@ -43,8 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GeoPosition.cs" />
+    <Compile Include="GeoPositionProvider.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RandomTeilnehmerProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
