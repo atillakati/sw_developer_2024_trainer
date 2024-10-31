@@ -62,5 +62,11 @@
       <Version>112.1.0</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Wifi.TeilnehmerVerwaltungV4.Core\Wifi.TeilnehmerVerwaltungV4.Core.csproj">
+      <Project>{4d569b65-ab58-4b40-b764-617bbaf457da}</Project>
+      <Name>Wifi.TeilnehmerVerwaltungV4.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

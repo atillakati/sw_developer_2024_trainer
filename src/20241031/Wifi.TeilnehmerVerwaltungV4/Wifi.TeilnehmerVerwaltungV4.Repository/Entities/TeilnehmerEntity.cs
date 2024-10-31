@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson;
+using System;
 
-namespace Wifi.TeilnehmerVerwaltungV4.Core
+namespace Wifi.TeilnehmerVerwaltungV4.Repository.Entities
 {
-    public class Teilnehmer
+    public class TeilnehmerEntity
     {
-        public string Id { get; set; }
+        [BsonId]
+        public ObjectId Id { get; set; }
+
         public string Vorname { get; set; }
         public string Nachname { get; set; }
         public int Plz { get; set; }

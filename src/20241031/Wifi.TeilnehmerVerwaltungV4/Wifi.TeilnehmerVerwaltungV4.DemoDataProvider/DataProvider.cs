@@ -1,10 +1,4 @@
-﻿using RestSharp.Authenticators;
-using RestSharp;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using RestSharp;
 using Wifi.TeilnehmerVerwaltungV4.DemoDataProvider.Entities;
 
 namespace Wifi.TeilnehmerVerwaltungV4.DemoDataProvider
@@ -23,7 +17,7 @@ namespace Wifi.TeilnehmerVerwaltungV4.DemoDataProvider
 
         public RandomData GetRandomData()
         {
-            _request = new RestRequest("/api/?results=1");
+            _request = new RestRequest("/api");
 
             var randomData = _client.Get<RandomData>(_request);
 
@@ -42,6 +36,7 @@ namespace Wifi.TeilnehmerVerwaltungV4.DemoDataProvider
             var randomData = _client.Get<RandomData>(_request);
 
             return randomData;
+
         }
     }
 }
