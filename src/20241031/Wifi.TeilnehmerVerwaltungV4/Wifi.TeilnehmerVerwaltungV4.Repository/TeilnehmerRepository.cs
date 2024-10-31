@@ -50,8 +50,8 @@ namespace Wifi.MongoDbLibrary
             var filter = Builders<TeilnehmerEntity>.Filter.Empty;
 
             var entityList = _collection.Find(filter).ToList();
-            
-            return TeilnehmerMapper.MapToDomain(entityList);
+
+            return entityList.ToDomain();
         }
 
         public Teilnehmer GetById(string id)
@@ -66,7 +66,8 @@ namespace Wifi.MongoDbLibrary
 
             var entity = _collection.Find(filter).FirstOrDefault();
 
-            return TeilnehmerMapper.MapToDomain(entity);
+            //return TeilnehmerMapper.MapToDomain(entity);
+            return entity.ToDomain();
         }
 
         public void Write(Teilnehmer newTeilnehmer)
@@ -76,7 +77,7 @@ namespace Wifi.MongoDbLibrary
                 return;
             }
 
-            var entity = TeilnehmerMapper.MapToEntity(newTeilnehmer);
+            var entity = newTeilnehmer.ToEntity();
 
             _collection.InsertOne(entity);
         }

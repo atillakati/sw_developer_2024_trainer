@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\TeilnehmerEntity.cs" />
-    <Compile Include="Entities\TeilnehmerMapper.cs" />
+    <Compile Include="Entities\TeilnehmerExtensions.cs" />
     <Compile Include="TeilnehmerRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
