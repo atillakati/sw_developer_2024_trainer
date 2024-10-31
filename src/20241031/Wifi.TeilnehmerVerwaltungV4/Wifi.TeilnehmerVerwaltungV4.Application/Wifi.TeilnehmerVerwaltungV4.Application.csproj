@@ -61,6 +61,15 @@
       <Project>{92bf5693-82e9-4257-83c5-d5f7488d3a61}</Project>
       <Name>Wifi.TeilnehmerVerwaltungV4.DemoDataProvider</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Wifi.TeilnehmerVerwaltungV4.Repository\Wifi.TeilnehmerVerwaltungV4.Repository.csproj">
+      <Project>{aebe1518-c9ad-4c32-a562-02374098bebe}</Project>
+      <Name>Wifi.TeilnehmerVerwaltungV4.Repository</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="ConsoleTableExt">
+      <Version>3.3.0</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
