@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35312.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wifi.PlaylistEditor.Core", "Wifi.PlaylistEditor.Core\Wifi.PlaylistEditor.Core.csproj", "{09B6CB3C-4F75-42BF-BD80-C2C8310BC0CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wifi.PlaylistEditor.Core.Test", "Wifi.PlaylistEditor.Core.Test\Wifi.PlaylistEditor.Core.Test.csproj", "{22528AF3-A0E7-4439-8E38-688DD228E305}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{09B6CB3C-4F75-42BF-BD80-C2C8310BC0CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09B6CB3C-4F75-42BF-BD80-C2C8310BC0CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09B6CB3C-4F75-42BF-BD80-C2C8310BC0CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09B6CB3C-4F75-42BF-BD80-C2C8310BC0CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22528AF3-A0E7-4439-8E38-688DD228E305}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22528AF3-A0E7-4439-8E38-688DD228E305}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22528AF3-A0E7-4439-8E38-688DD228E305}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22528AF3-A0E7-4439-8E38-688DD228E305}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BB295DA2-816F-4F6E-B2E7-41BF49D1755B}
+	EndGlobalSection
+EndGlobal
