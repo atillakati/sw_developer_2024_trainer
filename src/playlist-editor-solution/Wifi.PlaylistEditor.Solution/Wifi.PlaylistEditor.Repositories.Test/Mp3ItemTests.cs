@@ -1,22 +1,18 @@
 ﻿using NUnit.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Wifi.PlaylistEditor.Core;
 
 namespace Wifi.PlaylistEditor.Repositories.Test
 {
     [TestFixture]
-    public class Mp3RepositoryTests
+    public class Mp3ItemTests
     {
         private IPlaylistItem _fixture;
 
         [SetUp]
         public void Init()
         {
-            _fixture = new Mp3Repository("DemoFile.mp3");
+            _fixture = new Mp3Item("Assets/DemoFile.mp3");
         }
 
         [Test]
@@ -40,7 +36,7 @@ namespace Wifi.PlaylistEditor.Repositories.Test
         [Test]
         public void FilePath_get()
         {
-            Assert.That(_fixture.FilePath, Is.EqualTo("DemoFile.mp3"));
+            Assert.That(_fixture.FilePath, Is.EqualTo("Assets/DemoFile.mp3"));
         }
 
         [Test]

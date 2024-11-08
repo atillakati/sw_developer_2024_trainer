@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Mp3RepositoryTests.cs" />
+    <Compile Include="Mp3ItemTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -64,9 +64,10 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DemoFile.mp3">
+    <Content Include="Assets\DemoFile.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

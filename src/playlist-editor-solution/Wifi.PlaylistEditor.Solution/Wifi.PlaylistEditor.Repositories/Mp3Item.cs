@@ -6,7 +6,7 @@ using Wifi.PlaylistEditor.Core;
 
 namespace Wifi.PlaylistEditor.Repositories
 {
-    public class Mp3Repository : IPlaylistItem
+    public class Mp3Item : IPlaylistItem
     {
         private string _title;
         private string _artist;
@@ -15,7 +15,7 @@ namespace Wifi.PlaylistEditor.Repositories
         private Image _thumbnail;
 
 
-        public Mp3Repository(string filePath)
+        public Mp3Item(string filePath)
         {
             var mp3 = new Mp3(filePath);
             var id3Tag = mp3.GetTag(Id3TagFamily.Version2X);
