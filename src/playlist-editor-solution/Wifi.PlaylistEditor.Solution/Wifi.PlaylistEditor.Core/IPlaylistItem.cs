@@ -14,7 +14,7 @@ namespace Wifi.PlaylistEditor.Core
         string FilePath { get; }
 
         /// <summary>
-        /// Thumbnail of picture information max. 128x128 px
+        /// Thumbnail of picture information max. 125x125 px
         /// </summary>
         Image Thumbnail { get; }
     }

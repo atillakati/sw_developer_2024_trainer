@@ -53,17 +53,27 @@ namespace Wifi.PlaylistEditor.Core.Test
         }
 
         [Test]
-        public void Title_set()
+        [TestCaseSource(nameof(TitleSetTestCases))]
+        public void Title_set(int id, string newValue, string expectedValue)
         {
-            //arrange
-            var newTitle = "Gandalf";            
+            //arrange                  
 
             //act
-            _fixture.Title = newTitle;
+            _fixture.Title = newValue;
             var result = _fixture.Title;
 
             //assert
-            Assert.That(result, Is.EqualTo(newTitle));
+            Assert.That(result, Is.EqualTo(expectedValue), $"Testcase {id} failed.");
+        }
+
+        private static object[] TitleSetTestCases()
+        {
+            return new object[]
+            {
+                new object[] { 1, "Gandalf", "Gandalf"},
+                new object[] { 2, string.Empty, "Demo Playlist"},
+                new object[] { 3, null, "Demo Playlist"},
+            };
         }
 
         [Test]

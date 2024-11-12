@@ -14,7 +14,6 @@ namespace Wifi.PlaylistEditor.PlaylistItems
         private string _filePath;
         private Image _thumbnail;
 
-
         public Mp3Item(string filePath)
         {
             var mp3 = new Mp3(filePath);
@@ -25,7 +24,13 @@ namespace Wifi.PlaylistEditor.PlaylistItems
             _duration = mp3.Audio.Duration;
             _filePath = filePath;
             _thumbnail = GetThumbnail(id3Tag);
-        }
+        }        
+
+        public string Title { get => _title; }
+        public string Artist { get => _artist; }
+        public TimeSpan Duration { get => _duration; }
+        public string FilePath { get => _filePath; }
+        public Image Thumbnail { get => _thumbnail; }
 
         private Image GetThumbnail(Id3Tag id3Tag)
         {
@@ -34,14 +39,8 @@ namespace Wifi.PlaylistEditor.PlaylistItems
                 return null;
             }
 
-            _thumbnail = Image.FromStream(new MemoryStream(id3Tag.Pictures[0].PictureData));
-            return _thumbnail;
+            var thumbnail = Image.FromStream(new MemoryStream(id3Tag.Pictures[0].PictureData));
+            return thumbnail;
         }
-
-        public string Title { get => _title; }
-        public string Artist { get => _artist; }
-        public TimeSpan Duration { get => _duration; }
-        public string FilePath { get => _filePath; }
-        public Image Thumbnail { get => _thumbnail; }
     }
 }
