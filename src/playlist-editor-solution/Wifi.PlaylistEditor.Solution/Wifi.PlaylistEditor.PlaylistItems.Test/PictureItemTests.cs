@@ -2,7 +2,7 @@
 using System;
 using Wifi.PlaylistEditor.Core;
 
-namespace Wifi.PlaylistEditor.Repositories.Test
+namespace Wifi.PlaylistEditor.PlaylistItems.Test
 {
     [TestFixture]
     public class PictureItemTests

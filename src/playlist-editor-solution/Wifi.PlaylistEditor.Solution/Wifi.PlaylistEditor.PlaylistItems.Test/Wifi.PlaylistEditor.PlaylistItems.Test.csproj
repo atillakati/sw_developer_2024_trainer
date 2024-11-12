@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DCE92768-9732-4BBA-8AB9-22AB128B4D25}</ProjectGuid>
+    <ProjectGuid>{4A0E9DB9-5A13-496C-97CC-8A9A04F30AE4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Wifi.PlaylistEditor.Repositories</RootNamespace>
-    <AssemblyName>Wifi.PlaylistEditor.Repositories</AssemblyName>
+    <RootNamespace>Wifi.PlaylistEditor.Repositories.Test</RootNamespace>
+    <AssemblyName>Wifi.PlaylistEditor.Repositories.Test</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -42,8 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Mp3Item.cs" />
-    <Compile Include="PictureItem.cs" />
+    <Compile Include="PictureItemTests.cs" />
+    <Compile Include="Mp3ItemTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -51,11 +51,27 @@
       <Project>{09b6cb3c-4f75-42bf-bd80-c2c8310bc0ce}</Project>
       <Name>Wifi.PlaylistEditor.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Wifi.PlaylistEditor.PlaylistItems\Wifi.PlaylistEditor.PlaylistItems.csproj">
+      <Project>{dce92768-9732-4bba-8ab9-22ab128b4d25}</Project>
+      <Name>Wifi.PlaylistEditor.PlaylistItems</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="ID3">
-      <Version>0.6.0</Version>
+    <PackageReference Include="NUnit">
+      <Version>4.2.2</Version>
+    </PackageReference>
+    <PackageReference Include="NUnit3TestAdapter">
+      <Version>4.6.0</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Debugging.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\DemoFile.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

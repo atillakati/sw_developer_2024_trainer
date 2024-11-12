@@ -4,7 +4,7 @@ using System.Drawing;
 using System.IO;
 using Wifi.PlaylistEditor.Core;
 
-namespace Wifi.PlaylistEditor.Repositories
+namespace Wifi.PlaylistEditor.PlaylistItems
 {
     public class Mp3Item : IPlaylistItem
     {

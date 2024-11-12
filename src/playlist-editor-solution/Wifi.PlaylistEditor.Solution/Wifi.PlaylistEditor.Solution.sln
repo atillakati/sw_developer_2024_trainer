@@ -7,9 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wifi.PlaylistEditor.Core", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wifi.PlaylistEditor.Core.Test", "Wifi.PlaylistEditor.Core.Test\Wifi.PlaylistEditor.Core.Test.csproj", "{22528AF3-A0E7-4439-8E38-688DD228E305}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wifi.PlaylistEditor.Repositories", "Wifi.PlaylistEditor.Repositories\Wifi.PlaylistEditor.Repositories.csproj", "{DCE92768-9732-4BBA-8AB9-22AB128B4D25}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wifi.PlaylistEditor.PlaylistItems", "Wifi.PlaylistEditor.PlaylistItems\Wifi.PlaylistEditor.PlaylistItems.csproj", "{DCE92768-9732-4BBA-8AB9-22AB128B4D25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wifi.PlaylistEditor.Repositories.Test", "Wifi.PlaylistEditor.Repositories.Test\Wifi.PlaylistEditor.Repositories.Test.csproj", "{4A0E9DB9-5A13-496C-97CC-8A9A04F30AE4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wifi.PlaylistEditor.PlaylistItems.Test", "Wifi.PlaylistEditor.PlaylistItems.Test\Wifi.PlaylistEditor.PlaylistItems.Test.csproj", "{4A0E9DB9-5A13-496C-97CC-8A9A04F30AE4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
