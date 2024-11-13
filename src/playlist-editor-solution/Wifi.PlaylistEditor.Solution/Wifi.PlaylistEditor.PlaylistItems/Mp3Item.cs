@@ -14,6 +14,8 @@ namespace Wifi.PlaylistEditor.PlaylistItems
         private string _filePath;
         private Image _thumbnail;
 
+        internal Mp3Item() { }
+
         public Mp3Item(string filePath)
         {
             var mp3 = new Mp3(filePath);
@@ -42,5 +44,8 @@ namespace Wifi.PlaylistEditor.PlaylistItems
             var thumbnail = Image.FromStream(new MemoryStream(id3Tag.Pictures[0].PictureData));
             return thumbnail;
         }
+
+        public string Description { get => "MP3 audio files"; }
+        public string Extension { get => ".mp3"; }
     }
 }

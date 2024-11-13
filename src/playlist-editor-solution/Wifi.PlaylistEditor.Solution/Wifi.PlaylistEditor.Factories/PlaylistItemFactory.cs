@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Wifi.PlaylistEditor.Core;
 using Wifi.PlaylistEditor.PlaylistItems;
 
@@ -11,6 +8,13 @@ namespace Wifi.PlaylistEditor.Factories
 {
     public class PlaylistItemFactory : IPlaylistItemFactory
     {
+        public IEnumerable<IFileDescriptor> AvailableTypes => new IFileDescriptor[]
+        {
+            new Mp3Item(),
+            new PictureItem()
+        };
+
+
         public IPlaylistItem Create(string filePath)
         {
             IPlaylistItem newItem = null;
@@ -33,7 +37,7 @@ namespace Wifi.PlaylistEditor.Factories
                     break;
 
                 default:
-                    throw new NotImplementedException($"Dateityp {extension} wird leider nicht unterstützt.");                   
+                    throw new NotImplementedException($"Dateityp {extension} wird leider nicht unterstützt.");
             }
 
             return newItem;
