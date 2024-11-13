@@ -43,6 +43,9 @@
   <ItemGroup>
     <Compile Include="M3uRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PlsRepository.cs" />
+    <Compile Include="ZplRepository.cs" />
+    <Compile Include="WplRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="PlaylistsNET">
