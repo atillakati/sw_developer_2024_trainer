@@ -1,6 +1,6 @@
 ﻿namespace Wifi.PlaylistEditor.Core
 {
-    public interface IPlaylistRepository : IFileDescriptor
+    public interface IPlaylistRepository 
     {
         IPlaylist Load(string filePath);
 

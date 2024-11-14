@@ -43,7 +43,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IPlaylist.cs" />
-    <Compile Include="IFileDescriptor.cs" />
     <Compile Include="IPlaylistItem.cs" />
     <Compile Include="IPlaylistFactory.cs" />
     <Compile Include="IPlaylistItemFactory.cs" />

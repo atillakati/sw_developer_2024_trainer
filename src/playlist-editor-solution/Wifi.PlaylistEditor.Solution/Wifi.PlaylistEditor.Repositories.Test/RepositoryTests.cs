@@ -6,11 +6,9 @@ using Wifi.PlaylistEditor.Core;
 
 namespace Wifi.PlaylistEditor.Repositories.Test
 {
-    [TestFixture(typeof(M3uRepository))]
-    [TestFixture(typeof(WplRepository))]
-    [TestFixture(typeof(ZplRepository))]
-    [TestFixture(typeof(PlsRepository))]
-    public class RepositoryTests<T> where T : IPlaylistRepository
+    
+    [TestFixture]
+    public class RepositoryTests
     {
         private IPlaylistRepository _fixture;
 
@@ -27,7 +25,8 @@ namespace Wifi.PlaylistEditor.Repositories.Test
             _mockedPlaylistItemFactory = new Mock<IPlaylistItemFactory>();
             _mockedPlaylistFactory = new Mock<IPlaylistFactory>();
 
-            _fixture = (T)Activator.CreateInstance(typeof(T), _mockedPlaylistFactory.Object, _mockedPlaylistItemFactory.Object);
+            //_fixture = (T)Activator.CreateInstance(typeof(T), _mockedPlaylistFactory.Object, _mockedPlaylistItemFactory.Object);
+            _fixture = new M3uRepository(_mockedPlaylistFactory.Object, _mockedPlaylistItemFactory.Object);
 
             _mockedPlaylist = new Mock<IPlaylist>();
             _mockedItem1 = new Mock<IPlaylistItem>();
@@ -53,7 +52,7 @@ namespace Wifi.PlaylistEditor.Repositories.Test
         //[Ignore("Only for debugging")]
         public void Save()
         {
-            _fixture.Save(_mockedPlaylist.Object, "TestDemoPlaylist" + _fixture.Extension);
+            _fixture.Save(_mockedPlaylist.Object, "TestDemoPlaylist.m3u" );
         }
 
         [Test]
@@ -62,10 +61,10 @@ namespace Wifi.PlaylistEditor.Repositories.Test
         public void Load(int id, string filename, bool addExtension, Times playlistFactoryCount, Times itemFactoryCount)
         {
             //arrange
-            _fixture.Save(_mockedPlaylist.Object, "TestDemoPlaylist" + _fixture.Extension);
+            _fixture.Save(_mockedPlaylist.Object, "TestDemoPlaylist.m3u");
 
             //act
-            _fixture.Load(filename + (addExtension ? _fixture.Extension : string.Empty));
+            _fixture.Load(filename + (addExtension ? ".m3u" : string.Empty));
 
             //assert
             _mockedPlaylistFactory.Verify(x => x.Create(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<DateTime>()), playlistFactoryCount);

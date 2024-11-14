@@ -8,12 +8,7 @@ namespace Wifi.PlaylistEditor.Factories
 {
     public class PlaylistItemFactory : IPlaylistItemFactory
     {
-        public IEnumerable<IFileDescriptor> AvailableTypes => new IFileDescriptor[]
-        {
-            new Mp3Item(),
-            new PictureItem()
-        };
-
+        
 
         public IPlaylistItem Create(string filePath)
         {
