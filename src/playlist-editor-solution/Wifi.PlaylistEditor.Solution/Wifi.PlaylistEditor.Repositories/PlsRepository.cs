@@ -78,7 +78,8 @@ namespace Wifi.PlaylistEditor.Repositories
             }
 
             //create Playlist instance
-            var playlist = _playlistFactory.Create(Path.GetFileNameWithoutExtension(filePath), "Unknown", File.GetCreationTime(filePath));
+            var playlist = _playlistFactory.Create(Path.GetFileNameWithoutExtension(filePath), 
+                                                   "Unknown", File.GetCreationTime(filePath));
             
             //add item instances
             foreach (var plsItem in plsPlaylist.PlaylistEntries)

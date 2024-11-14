@@ -15,7 +15,8 @@ namespace Wifi.PlaylistEditor.Repositories
         private readonly IPlaylistItemFactory _playlistItemFactory;
 
 
-        public M3uRepository(IPlaylistFactory playlistFactory, IPlaylistItemFactory playlistItemFactory)
+        public M3uRepository(IPlaylistFactory playlistFactory, 
+                             IPlaylistItemFactory playlistItemFactory)
         {
             _playlistFactory = playlistFactory;
             _playlistItemFactory = playlistItemFactory;
@@ -64,7 +65,8 @@ namespace Wifi.PlaylistEditor.Repositories
             M3uPlaylist m3uPlaylist;
             var content = new M3uContent();
 
-            if (string.IsNullOrEmpty(filePath) || !File.Exists(filePath) || Path.GetExtension(filePath) != Extension)
+            if (string.IsNullOrEmpty(filePath) || !File.Exists(filePath) 
+                || Path.GetExtension(filePath) != Extension)
             {
                 return null;
             }
