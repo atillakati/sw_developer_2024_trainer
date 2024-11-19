@@ -45,3 +45,9 @@ Siehe dazu auch: [Leichter testen mit Moq](https://graberj.wordpress.com/2011/12
 Unit-Test Klassen werden mit dem Attribut ```[TestFixture]``` eingeleitet. Jede Test-Methode muss mit ```[Test]``` markiert werden. Die Methode mit dem Attribut ```[SetUp]``` wird vor jeder Test-Methode ausgeführt und kan für Initilisierungen und Vorbereitungen verwendet werden. 
 
 Zum Thema kann das Buch [Art of Unit Testing](https://www.artofunittesting.com/) empfohlen werden.
+
+## Übersicht Faktories
+
+![overview](overview-factories.drawio.png)
+
+Faktories sollen die Erzeugung von Objekten kapseln. Mit diesem Pattern können **Erzeugungsabhängigkeiten** vermieden werden.
