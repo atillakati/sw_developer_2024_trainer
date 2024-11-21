@@ -1,0 +1,24 @@
+<?wpl version="1.0"?>
+<smil>
+  <head>
+    <author>Dj Gandalf</author>
+    <guid>7f532f27-be97-4993-8ac0-cf05fb20db9b</guid>
+    <meta name="Generator" content="WIFI Playlist Editor" />
+    <meta name="ItemCount" content="9" />
+    <meta name="totalDuration" content="3172000" />
+    <title>Meine Top Hits 1980</title>
+  </head>
+  <body>
+    <seq>
+      <media src="C:\Users\User\Pictures\brettspiel.jpg" trackTitle="brettspiel" trackArtist="Unknown" duration="10000" />
+      <media src="C:\myCode\Repositories\sw_developer_2024_trainer\DemoFiles\001 - Bruno Mars - Grenade.mp3" trackTitle="Grenade" trackArtist="Bruno Mars" duration="222000" />
+      <media src="C:\myCode\Repositories\sw_developer_2024_trainer\DemoFiles\001 - Bruno Mars - Grenade.mp3" trackTitle="Grenade" trackArtist="Bruno Mars" duration="222000" />
+      <media src="C:\myCode\Repositories\sw_developer_2024_trainer\DemoFiles\01 - Broken Pieces (feat. Nihils).mp3" trackTitle="Broken Pieces (feat. Nihils)" trackArtist="Camo &amp; Krooked" duration="947000" />
+      <media src="C:\myCode\Repositories\sw_developer_2024_trainer\DemoFiles\002 - Lena - Taken By A Stranger.mp3" trackTitle="Taken By A Stranger" trackArtist="Lena" duration="245000" />
+      <media src="C:\myCode\Repositories\sw_developer_2024_trainer\DemoFiles\003 - Adele - Rolling in the deep.mp3" trackTitle="Rolling in the deep" trackArtist="Adele" duration="316000" />
+      <media src="C:\myCode\Repositories\sw_developer_2024_trainer\DemoFiles\004 - Hurts - Stay.mp3" trackTitle="Stay" trackArtist="Hurts" duration="424000" />
+      <media src="C:\myCode\Repositories\sw_developer_2024_trainer\DemoFiles\005 - Taio Cruz feat. Kylie Minogue - Higher.mp3" trackTitle="Higher" trackArtist="Taio Cruz feat. Kylie Minogue" duration="268000" />
+      <media src="C:\myCode\Repositories\sw_developer_2024_trainer\DemoFiles\006 - Lady Gaga - Born This Way.mp3" trackTitle="Born This Way" trackArtist="Lady Gaga" duration="518000" />
+    </seq>
+  </body>
+</smil>

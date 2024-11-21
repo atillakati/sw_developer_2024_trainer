@@ -46,6 +46,12 @@ namespace Wifi.PlaylistEditor.PlaylistItems
         }
 
         public string Description { get => "MP3 audio files"; }
+
         public string Extension { get => ".mp3"; }
+
+        public override string ToString()
+        {
+            return $"{_title}-{_artist}\r\n[{_duration}]";
+        }
     }
 }

@@ -45,7 +45,13 @@ namespace Wifi.PlaylistEditor.PlaylistItems
         public TimeSpan Duration { get => TimeSpan.FromSeconds(10); }
         public string FilePath { get => _filePath; }
         public Image Thumbnail { get => _thumbnail; }
+
         public string Description { get => "JPG Picture file"; }
         public string Extension { get => ".jpg"; }
+
+        public override string ToString()
+        {
+            return $"{_title}";
+        }
     }
 }

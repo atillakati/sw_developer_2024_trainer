@@ -8,7 +8,18 @@ namespace Wifi.PlaylistEditor.Factories
 {
     public class PlaylistItemFactory : IPlaylistItemFactory
     {
-        
+        private IEnumerable<IFileTypeInfo> _availableTypes;
+
+        public PlaylistItemFactory()
+        {
+            _availableTypes = new List<IFileTypeInfo>
+            {
+                new Mp3Item(),
+                new PictureItem()
+            };
+        }
+
+        public IEnumerable<IFileTypeInfo> AvailableTypes => _availableTypes;
 
         public IPlaylistItem Create(string filePath)
         {
@@ -32,7 +43,8 @@ namespace Wifi.PlaylistEditor.Factories
                     break;
 
                 default:
-                    throw new NotImplementedException($"Dateityp {extension} wird leider nicht unterstützt.");
+                    break;
+                    //throw new NotImplementedException($"Dateityp {extension} wird leider nicht unterstützt.");
             }
 
             return newItem;

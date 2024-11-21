@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IFileTypeInfo.cs" />
     <Compile Include="IPlaylist.cs" />
     <Compile Include="IPlaylistItem.cs" />
     <Compile Include="IPlaylistFactory.cs" />

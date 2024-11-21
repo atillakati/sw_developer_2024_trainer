@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace Wifi.PlaylistEditor.Core
 {
-    public interface IPlaylistItem 
+    public interface IPlaylistItem : IFileTypeInfo
     {
         string Title { get; }
 
