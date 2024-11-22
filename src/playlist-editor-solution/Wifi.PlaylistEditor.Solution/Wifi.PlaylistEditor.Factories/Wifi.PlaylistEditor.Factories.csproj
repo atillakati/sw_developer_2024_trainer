@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DynamicRepositoryFactory.cs" />
     <Compile Include="PlaylistFactory.cs" />
     <Compile Include="PlaylistItemFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -59,6 +60,11 @@
       <Project>{b7a0bc38-5fc0-4f68-8b1b-caa5d13eaa67}</Project>
       <Name>Wifi.PlaylistEditor.Repositories</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Autofac">
+      <Version>8.1.1</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
