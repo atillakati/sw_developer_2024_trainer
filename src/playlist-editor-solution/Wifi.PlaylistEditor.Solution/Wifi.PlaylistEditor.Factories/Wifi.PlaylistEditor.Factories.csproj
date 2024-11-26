@@ -41,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DynamicRepositoryFactory.cs" />
     <Compile Include="PlaylistFactory.cs" />
     <Compile Include="PlaylistItemFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
