@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Wifi.PlaylistEditor.Core")]
-[assembly: AssemblyDescription("Base types to implemenet playlist editor classes and features.")]
+[assembly: AssemblyTitle("Wifi.PlaylistEditor.AdditionalRepositories")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("WIFI Solutions")]
-[assembly: AssemblyProduct("Wifi.PlaylistEditor.Core")]
-[assembly: AssemblyCopyright("Copyright Atilla Kati © 2024")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("Wifi.PlaylistEditor.AdditionalRepositories")]
+[assembly: AssemblyCopyright("Copyright ©  2024")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("09b6cb3c-4f75-42bf-bd80-c2c8310bc0ce")]
+[assembly: Guid("497ff606-4214-4dd9-b7b8-a810f4219fe4")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -29,5 +29,5 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("1.0.0.1")]
-[assembly: AssemblyFileVersion("1.0.0.1")]
+[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.0.0.0")]

@@ -21,14 +21,14 @@ namespace Wifi.PlaylistEditor
 
             builder.RegisterType<frm_CreateNewPlaylist>().As<ICreatePlaylist>();
             builder.RegisterType<PlaylistFactory>().As<IPlaylistFactory>();
-            builder.RegisterType<DynamicRepositoryFactory>().As<IRepositoryFactory>();            
+            //builder.RegisterType<RepositoryFactory>().As<IRepositoryFactory>();
+            builder.RegisterType<DynamicRepositoryFactory>().As<IRepositoryFactory>();
             builder.RegisterType<PlaylistItemFactory>().As<IPlaylistItemFactory>();
             builder.RegisterType<frm_main>();
 
             RegisterFromAssemblies(builder);
 
             var container = builder.Build();
-
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -38,17 +38,18 @@ namespace Wifi.PlaylistEditor
         private static void RegisterFromAssemblies(ContainerBuilder builder)
         {
             var filePath = Assembly.GetExecutingAssembly().Location;
+            var directoryInfo = new DirectoryInfo(Path.GetDirectoryName(filePath));
 
-            DirectoryInfo directoryInfo = new DirectoryInfo(Path.GetDirectoryName(filePath));
+            //get all filtered files from directory
             var files = directoryInfo.EnumerateFiles("Wifi.*.dll");
-            
-            foreach (var assemblyPath in files)
-            {
-                var dataAccess = Assembly.LoadFile(assemblyPath.FullName);
 
-                builder.RegisterAssemblyTypes(dataAccess)
-                    .Where(t => t.Name.EndsWith("Repository"))
-                    .AsImplementedInterfaces();
+            foreach (var assembly in files)
+            {
+                var loadedAssembly = Assembly.LoadFile(assembly.FullName);
+
+                builder.RegisterAssemblyTypes(loadedAssembly)
+                       .Where(t => t.Name.EndsWith("Repository"))
+                       .AsImplementedInterfaces();
             }
         }
     }

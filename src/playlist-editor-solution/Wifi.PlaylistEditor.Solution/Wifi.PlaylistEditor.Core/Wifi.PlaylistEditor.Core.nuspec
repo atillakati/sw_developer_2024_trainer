@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <!-- <icon>icon.png</icon> -->
+    <projectUrl>https://github.com/atillakati/sw_developer_2024_trainer/tree/develop/src/playlist-editor-solution</projectUrl>
+    <description>$description$</description>    
+    <copyright>$copyright$</copyright>    
+  </metadata>
+</package>

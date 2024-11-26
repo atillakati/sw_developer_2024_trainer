@@ -1,0 +1,3 @@
+@echo off
+echo Nuget Package wird publiziert...
+dotnet nuget push "Wifi.PlaylistEditor.Core.1.0.0.1.nupkg" --api-key TOKEN --source "Github"

@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Wifi.PlaylistEditor.Core;
 
 namespace Wifi.PlaylistEditor.Factories
@@ -13,6 +16,7 @@ namespace Wifi.PlaylistEditor.Factories
         {
             _playlistRepositories = playlistRepositories;
         }
+
 
         public IEnumerable<IFileTypeInfo> AvailableTypes => _playlistRepositories;
 
