@@ -39,9 +39,6 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="Wifi.PlaylistEditor.Core">
-      <HintPath>..\..\playlist-editor-solution\Wifi.PlaylistEditor.Solution\Wifi.PlaylistEditor.Core\bin\Debug\Wifi.PlaylistEditor.Core.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Json\Entities\PlaylistEntity.cs" />
@@ -52,6 +49,9 @@
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json">
       <Version>13.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="Wifi.PlaylistEditor.Core">
+      <Version>1.0.0.1</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
