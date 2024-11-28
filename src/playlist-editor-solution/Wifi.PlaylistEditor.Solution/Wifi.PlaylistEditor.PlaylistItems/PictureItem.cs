@@ -18,27 +18,9 @@ namespace Wifi.PlaylistEditor.PlaylistItems
         {
             _filePath = filePath;
             _title = Path.GetFileNameWithoutExtension(_filePath);
-            _thumbnail = ScaleImage(Image.FromFile(_filePath), 125, 125);
-        }
-
-        private Bitmap ScaleImage(Image bmp, int maxWidth, int maxHeight)
-        {
-            var ratioX = (double)maxWidth / bmp.Width;
-            var ratioY = (double)maxHeight / bmp.Height;
-            var ratio = Math.Min(ratioX, ratioY);
-
-            var newWidth = (int)(bmp.Width * ratio);
-            var newHeight = (int)(bmp.Height * ratio);
-
-            var newImage = new Bitmap(newWidth, newHeight);
-
-            using (var graphics = Graphics.FromImage(newImage))
-            {
-                graphics.DrawImage(bmp, 0, 0, newWidth, newHeight);
-            }
-
-            return newImage;
-        }
+            _thumbnail = Image.FromFile(_filePath)
+                              .ResizeAndFill(125, 125, Color.White);
+        }        
 
         public string Title { get => _title; }
         public string Artist { get => "Unknown"; }

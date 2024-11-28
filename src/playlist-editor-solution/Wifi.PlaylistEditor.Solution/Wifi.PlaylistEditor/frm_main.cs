@@ -93,8 +93,24 @@ namespace Wifi.PlaylistEditor
                     img_list.Images.Add(Resources.No_Image_Available);
                 }
 
+                if(playlistItem is IRefreshableItem refreshable)
+                {
+                    refreshable.ItemUpdated += Refreshable_ItemUpdated;
+                }
+
                 lst_items.Items.Add(viewItem);
             }
+        }
+
+        private void Refreshable_ItemUpdated(object sender, EventArgs e)
+        {
+            if(sender is IRefreshableItem refreshable)
+            {
+                refreshable.ItemUpdated -= Refreshable_ItemUpdated;
+            }
+
+            //update view => use the UI thread to execute method
+            BeginInvoke(new MethodInvoker(UpdateItemsView));
         }
 
         private void UpdateMetaDataView()
