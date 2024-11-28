@@ -13,12 +13,14 @@ using Wifi.PlaylistEditor.Core;
 
 namespace Wifi.PlaylistEditor.PlaylistItems
 {
-    public class Mp3ProxyItem : IPlaylistItem
+    public class Mp3ProxyItem : IPlaylistItem, IRefreshableItem
     {
         private readonly string _filePath;
         private readonly DiscogsApiClient _client;
         private Mp3Item _realItem;
         private Image _thumbnail;
+
+        public event EventHandler ItemUpdated;
 
         internal Mp3ProxyItem() { }
 
@@ -102,6 +104,9 @@ namespace Wifi.PlaylistEditor.PlaylistItems
             {
                 _thumbnail = null;
             }
+
+            //fire refresh me event
+            ItemUpdated?.Invoke(this, EventArgs.Empty);
         }
 
         private async Task<Image> DownloadImageFromWeb(string urlToDownload)

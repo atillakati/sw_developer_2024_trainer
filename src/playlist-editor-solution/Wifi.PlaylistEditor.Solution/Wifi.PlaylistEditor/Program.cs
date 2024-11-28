@@ -47,8 +47,12 @@ namespace Wifi.PlaylistEditor
             {
                 var loadedAssembly = Assembly.LoadFile(assembly.FullName);
 
+                //builder.RegisterAssemblyTypes(loadedAssembly)
+                //       .Where(t => t.Name.EndsWith("Repository"))
+                //       .AsImplementedInterfaces();
+
                 builder.RegisterAssemblyTypes(loadedAssembly)
-                       .Where(t => t.Name.EndsWith("Repository"))
+                       .Where(t => t.GetInterface(nameof(IPlaylistRepository)) != null)
                        .AsImplementedInterfaces();
             }
         }
