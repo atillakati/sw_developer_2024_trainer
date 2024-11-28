@@ -14,7 +14,7 @@ namespace Wifi.PlaylistEditor.Factories
         {
             _availableTypes = new List<IFileTypeInfo>
             {
-                new Mp3Item(),
+                new Mp3ProxyItem(),
                 new PictureItem()
             };
         }
@@ -35,7 +35,7 @@ namespace Wifi.PlaylistEditor.Factories
             switch (extension)
             {
                 case ".mp3":
-                    newItem = new Mp3Item(filePath);
+                    newItem = new Mp3ProxyItem(filePath);
                     break;
 
                 case ".jpg":
