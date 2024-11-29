@@ -63,6 +63,16 @@ namespace Wifi.PlaylistEditor.PlaylistItems {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] Cloud {
+            get {
+                object obj = ResourceManager.GetObject("Cloud", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] please_wait {
             get {
                 object obj = ResourceManager.GetObject("please-wait", resourceCulture);

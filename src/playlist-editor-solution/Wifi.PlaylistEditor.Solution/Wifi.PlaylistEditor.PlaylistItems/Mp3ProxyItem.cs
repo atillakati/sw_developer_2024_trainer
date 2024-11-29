@@ -97,7 +97,7 @@ namespace Wifi.PlaylistEditor.PlaylistItems
                 _thumbnail = await DownloadImageFromWeb(thumbUrl);
                 if (_thumbnail != null)
                 {
-                    _thumbnail = _thumbnail.ResizeAndFill(125, 125, Color.Yellow);
+                    _thumbnail = _thumbnail.ResizeAndFill(125, 125, Color.White, true);
                 }
             }
             else
